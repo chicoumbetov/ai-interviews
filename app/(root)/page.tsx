@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import InterviewCard from "@/components/InterviewCard";
 import { Button } from "@/components/ui/button";
-// import InterviewCard from "@/components/InterviewCard";
+import { dummyInterviews } from "@/constants";
 
 /* import { getCurrentUser } from "@/lib/actions/auth.action";
 import {
@@ -49,11 +50,18 @@ async function Home() {
         <h2>Your Interviews</h2>
 
         <div className="interviews-section">
-          {/*hasPastInterviews ? (
-            userInterviews?.map((interview) => (
+          {
+            /*hasPastInterviews ? (
+            userInterviews?
+
+             : (
+            <p>You haven&apos;t taken any interviews yet</p>
+          )
+            */
+            dummyInterviews.map((interview) => (
               <InterviewCard
                 key={interview.id}
-                userId={user?.id}
+                userId="user?.id" // {user?.id}
                 interviewId={interview.id}
                 role={interview.role}
                 type={interview.type}
@@ -61,9 +69,7 @@ async function Home() {
                 createdAt={interview.createdAt}
               />
             ))
-          ) : (
-            <p>You haven&apos;t taken any interviews yet</p>
-          )*/}
+          }
         </div>
       </section>
 
