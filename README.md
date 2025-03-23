@@ -661,3 +661,5 @@ components button form input sonner are generated using command and then utils a
 ```
 npx shadcn@latest add button form input sonner
 ```
+
+<img src="./auth-work-schema.png" alt="auth-schema" />
