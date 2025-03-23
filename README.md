@@ -663,3 +663,7 @@ npx shadcn@latest add button form input sonner
 ```
 
 <img src="./auth-work-schema.png" alt="auth-schema" />
+
+## AI interaction between human and AI interviewer
+
+<img src="./AI-interaction-schema.png" alt="ai-schema" />
