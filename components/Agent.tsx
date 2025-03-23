@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-// import { interviewer } from "@/constants";
+import { interviewer } from "@/constants";
 import { createFeedback } from "@/lib/actions/general.action";
 import { cn } from "@/lib/utils";
-// import { vapi } from "@/lib/vapi.sdk";
+import { vapi } from "@/lib/vapi.sdk";
 
 enum CallStatus {
   INACTIVE = "INACTIVE",
@@ -64,7 +64,7 @@ const Agent = ({
     const onError = (error: Error) => {
       console.log("Error:", error);
     };
-    /*
+
     vapi.on("call-start", onCallStart);
     vapi.on("call-end", onCallEnd);
     vapi.on("message", onMessage);
@@ -80,7 +80,6 @@ const Agent = ({
       vapi.off("speech-end", onSpeechEnd);
       vapi.off("error", onError);
     };
-    */
   }, []);
 
   useEffect(() => {
@@ -119,14 +118,12 @@ const Agent = ({
     setCallStatus(CallStatus.CONNECTING);
 
     if (type === "generate") {
-      /*
       await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
         variableValues: {
           username: userName,
           userid: userId,
         },
       });
-      */
     } else {
       let formattedQuestions = "";
       if (questions) {
@@ -134,19 +131,18 @@ const Agent = ({
           .map((question) => `- ${question}`)
           .join("\n");
       }
-      /*
+
       await vapi.start(interviewer, {
         variableValues: {
           questions: formattedQuestions,
         },
       });
-      */
     }
   };
 
   const handleDisconnect = () => {
     setCallStatus(CallStatus.FINISHED);
-    // vapi.stop();
+    vapi.stop();
   };
 
   return (
