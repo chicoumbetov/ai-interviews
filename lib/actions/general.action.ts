@@ -1,9 +1,9 @@
 "use server";
 
-// import { google } from "@ai-sdk/google";
-// import { generateObject } from "ai";
+import { google } from "@ai-sdk/google";
+import { generateObject } from "ai";
 
-// import { feedbackSchema } from "@/constants";
+import { feedbackSchema } from "@/constants";
 import { db } from "@/firebase/admin";
 
 export async function createFeedback(params: CreateFeedbackParams) {
@@ -16,7 +16,7 @@ export async function createFeedback(params: CreateFeedbackParams) {
           `- ${sentence.role}: ${sentence.content}\n`
       )
       .join("");
-    /*
+
     const { object } = await generateObject({
       model: google("gemini-2.0-flash-001", {
         structuredOutputs: false,
@@ -48,7 +48,7 @@ export async function createFeedback(params: CreateFeedbackParams) {
       finalAssessment: object.finalAssessment,
       createdAt: new Date().toISOString(),
     };
-    */
+
     let feedbackRef;
 
     if (feedbackId) {
@@ -57,7 +57,7 @@ export async function createFeedback(params: CreateFeedbackParams) {
       feedbackRef = db.collection("feedback").doc();
     }
 
-    // await feedbackRef.set(feedback);
+    await feedbackRef.set(feedback);
 
     return { success: true, feedbackId: feedbackRef.id };
   } catch (error) {
