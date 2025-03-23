@@ -9,8 +9,11 @@ import { toast } from "sonner";
 import { z } from "zod";
 
 import { auth } from "@/firebase/client";
-import { signUp } from "@/lib/actions/auth.action";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signIn, signUp } from "@/lib/actions/auth.action";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
@@ -64,7 +67,6 @@ const AuthForm = ({ type }: { type: FormType }) => {
         toast.success("Account created successfully. Please sign in.");
         router.push("/sign-in");
       } else {
-        /*
         const { email, password } = data;
 
         const userCredential = await signInWithEmailAndPassword(
@@ -83,7 +85,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
           email,
           idToken,
         });
-*/
+
         toast.success("Signed in successfully.");
         router.push("/");
       }
