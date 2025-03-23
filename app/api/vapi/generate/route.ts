@@ -6,6 +6,7 @@ import { getRandomInterviewCover } from "@/lib/utils";
 
 export async function POST(request: Request) {
   const { type, role, level, techstack, amount, userid } = await request.json();
+  console.log("POST type :", type, role, level, techstack, amount, userid);
 
   try {
     const { text: questions } = await generateText({

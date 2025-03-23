@@ -45,6 +45,7 @@ const Agent = ({
     };
 
     const onMessage = (message: Message) => {
+      console.log("onMessage message :", message);
       if (message.type === "transcript" && message.transcriptType === "final") {
         const newMessage = { role: message.role, content: message.transcript };
         setMessages((prev) => [...prev, newMessage]);
@@ -62,7 +63,7 @@ const Agent = ({
     };
 
     const onError = (error: Error) => {
-      console.log("Error:", error);
+      console.log("Error in Agent.tsx:", error);
     };
 
     vapi.on("call-start", onCallStart);
@@ -116,6 +117,7 @@ const Agent = ({
 
   const handleCall = async () => {
     setCallStatus(CallStatus.CONNECTING);
+    console.log("handleCall type", type);
 
     if (type === "generate") {
       await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
