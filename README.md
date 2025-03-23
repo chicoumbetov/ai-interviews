@@ -14,6 +14,8 @@
 
   <h3 align="center">Prepwise: A job interview preparation platform powered by Vapi AI Voice agents</h3>
 
+Project
+
 </div>
 
 ## 📋 <a name="table">Table of Contents</a>
@@ -27,6 +29,10 @@
 7. 🚀 [More](#more)
 
 ## <a name="introduction">🤖 Introduction</a>
+
+Project deployed here:
+
+<a href="https://ai-interviews-ecru.vercel.app/" target="_blank">AI Interview Project</a>
 
 Built with Next.js for the user interface and backend logic, Firebase for authentication and data storage, styled with TailwindCSS and using Vapi's voice agents, Prepwise is a website project designed to help you learn integrating AI models with your apps. The platform offers a sleek and modern experience for job interview preparation.
 
