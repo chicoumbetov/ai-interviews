@@ -8,14 +8,9 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
-/*
 import { auth } from "@/firebase/client";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { signIn, signUp } from "@/lib/actions/auth.action";
-*/
+import { signUp } from "@/lib/actions/auth.action";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
@@ -46,7 +41,6 @@ const AuthForm = ({ type }: { type: FormType }) => {
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       if (type === "sign-up") {
-        /*
         const { name, email, password } = data;
 
         const userCredential = await createUserWithEmailAndPassword(
@@ -66,7 +60,6 @@ const AuthForm = ({ type }: { type: FormType }) => {
           toast.error(result.message);
           return;
         }
-        */
 
         toast.success("Account created successfully. Please sign in.");
         router.push("/sign-in");
