@@ -5,6 +5,7 @@ import { generateObject } from "ai";
 
 import { feedbackSchema } from "@/constants";
 import { db } from "@/firebase/admin";
+import { toast } from "sonner";
 
 export async function createFeedback(params: CreateFeedbackParams) {
   const { interviewId, userId, transcript, feedbackId } = params;
@@ -110,16 +111,21 @@ export async function getLatestInterviews(
 }
 
 export async function getInterviewsByUserId(
-  userId: string
+  userId?: string
 ): Promise<Interview[] | null> {
-  const interviews = await db
-    .collection("interviews")
-    .where("userId", "==", userId)
-    .orderBy("createdAt", "desc")
-    .get();
+  if (userId) {
+    const interviews = await db
+      .collection("interviews")
+      .where("userId", "==", userId)
+      .orderBy("createdAt", "desc")
+      .get();
 
-  return interviews.docs.map((doc: any) => ({
-    id: doc.id,
-    ...doc.data(),
-  })) as Interview[];
+    return interviews.docs.map((doc: any) => ({
+      id: doc.id,
+      ...doc.data(),
+    })) as Interview[];
+  } else {
+    toast.error("There is no userId");
+    return null;
+  }
 }
